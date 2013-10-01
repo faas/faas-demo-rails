@@ -1,0 +1,21 @@
+<script src="https://api-beta.faas.io/require.js"></script>
+<script src="https://api-beta.faas.io/<%= ENV['FAAS_API_KEY'] %>.js?bouncer=0"></script>
+
+<p>
+<a href="#login" onclick="faas.bouncer.start()">Login</a>
+
+<p>
+<a href="#logout" onclick="faas.bouncer.logout('/')">Logout</a>
+
+<p>
+Ruby:
+<%= @user && @user.username %> - <%= @user.inspect %>
+
+<p>
+JS:
+<!--
+<script>document.write(faas.bouncer.getUsername());</script>
+-->
+
+<span id="username"></span>
+<script>require(['faas'], function() {$('#username').html( JSON.stringify(faas.bouncer.getUsername()) )})</script>
